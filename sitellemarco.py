@@ -4,6 +4,7 @@ import streamlit as st
 # Carregar os dados da planilha
 #tabela = pd.read_excel(r"B:\24 - Inteligencia\planilha meta king 50 anos.xlsx")
 tabela = pd.read_csv(f"https://docs.google.com/spreadsheets/d/1EfLHMs8AQ9NFflQpQd8qZer6yHVo0gQTUKxGGisy6Co/export?format=csv", decimal=",")
+tabela["Faturamento Total"] = tabela["Faturamento Total"].fillna("R$ 0,00")
 
 # Configuração inicial do Streamlit
 st.set_page_config(
