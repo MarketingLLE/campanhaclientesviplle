@@ -103,7 +103,7 @@ if st.session_state.pagina == "inicio":
 
 
     with col2:
-        st.image("https://iili.io/3CuR93B.jpg")
+        #st.image("https://iili.io/3CuR93B.jpg")
         st.subheader("Bem-vindo (a) ao portal de consulta.", "center")
         st.write("Digite o código da matriz do seu grupo econômico:")
         col11, col22 = st.columns([2,1.3])
@@ -187,7 +187,7 @@ elif st.session_state.pagina == "detalhes":
         </style>
     """, unsafe_allow_html=True)
 
-    st.image("https://iili.io/3CuR93B.jpg", width = 1760)
+    #st.image("https://iili.io/3CuR93B.jpg", width = 1760)
 
     # Pega os dados do cliente
     codigo_cliente = st.session_state.codigo_cliente
