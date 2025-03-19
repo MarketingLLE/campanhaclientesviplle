@@ -200,6 +200,7 @@ elif st.session_state.pagina == "detalhes":
         percentual = dados_cliente["% Alcançado"].values[0]
         valor_falta = dados_cliente["Valor que falta"].values[0]
         situacao = dados_cliente["Situação"].values[0]
+        cashback = dados_cliente["Cashback"].values[0]
         ultima_atualizacao = dados_cliente["Última Atualização"].values[0]
 
         # 🔹 **Seção de Identificação do Cliente**
@@ -250,13 +251,15 @@ elif st.session_state.pagina == "detalhes":
 """, unsafe_allow_html=True)
 
         # 🔹 **Seção de Prêmio e Última Atualização**
-        st.markdown("### ⏱️ Última Atualização")
+        st.markdown("### 💵 Cashback e Última Atualização")
         st.markdown(f"""
             <table class="styled-table">
                 <tr class="black-background">
+                    <th>Prêmio (Cashback) - em caso de atingimento de meta</th>
                     <th>Última Atualização</th>
                 </tr>
                 <tr>
+                    <td>{cashback}</td>
                     <td>{ultima_atualizacao}</td>
                 </tr>
             </table>
