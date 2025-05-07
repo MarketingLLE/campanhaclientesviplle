@@ -20,10 +20,10 @@ if "pagina" not in st.session_state:
 # 🔹 Função para verificar cliente
 def verificar_cliente(cod_matriz):
     try:
-        nome = tabela.loc[tabela["Cod_Matriz"] == cod_matriz, "Nome Matriz"].values[0]
-        return f"**Grupo econômico encontrado:** {cod_matriz} - {nome}"
+        nome = tabela.loc[tabela["Cod_parceiro"] == cod_matriz, "Razao"].values[0]
+        return f"**Loja encontrada:** {cod_matriz} - {nome}"
     except:
-        return "🚨 Cliente não encontrado! Verifique o código da matriz."
+        return "🚨 Cliente não encontrado! Verifique o código da loja."
 
 # 🔹 **Primeira página (Corrigindo alinhamento)**
 if st.session_state.pagina == "inicio":
@@ -105,10 +105,10 @@ if st.session_state.pagina == "inicio":
     with col2:
         #st.image("https://iili.io/3CuR93B.jpg")
         st.subheader("Bem-vindo (a) ao portal de consulta.", "center")
-        st.write("Digite o código da matriz do seu grupo econômico:")
+        st.write("Digite o código de parceiro da sua loja:")
         col11, col22 = st.columns([2,1.3])
         with col11:
-            codigo = (st.number_input(label = "",label_visibility="collapsed", value = None,format="%0.0f", placeholder="Digite o código de matriz do seu grupo econômico"))
+            codigo = (st.number_input(label = "",label_visibility="collapsed", value = None,format="%0.0f", placeholder="Digite o código de parceiro da sua loja"))
 
         if codigo == None:
             pass
@@ -191,10 +191,10 @@ elif st.session_state.pagina == "detalhes":
 
     # Pega os dados do cliente
     codigo_cliente = st.session_state.codigo_cliente
-    dados_cliente = tabela[tabela["Cod_Matriz"] == codigo_cliente]
+    dados_cliente = tabela[tabela["Cod_parceiro"] == codigo_cliente]
 
     if not dados_cliente.empty:
-        nome_matriz = dados_cliente["Nome_Matriz"].values[0]
+        nome_matriz = dados_cliente["Razao"].values[0]
         meta = dados_cliente["Meta"].values[0]
         faturado = dados_cliente["Faturamento Total"].values[0]
         percentual = dados_cliente["% Alcançado"].values[0]
@@ -209,7 +209,7 @@ elif st.session_state.pagina == "detalhes":
             <table class="styled-table">
                 <tr class="black-background">
                     <th>Código Cliente</th>
-                    <th>Nome Matriz</th>
+                    <th>Razão Social</th>
                 </tr>
                 <tr>
                     <td class="bold-text">{codigo_cliente}</td>
